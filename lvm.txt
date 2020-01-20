@@ -1,0 +1,21 @@
+pvcreate /dev/sdb 
+pvs
+vgs
+pvcreate /dev/sdc
+pvs
+pvdisplay
+vgcreate vg00 /dev/sdb /dev/sdc
+vgs
+lvcreate -n vol_p1 -L 1.9G vg00
+lvs
+mkfs.ext4 /dev/vg00/vol_p1
+file -sL /dev/vg00/vol_p1
+mount /dev/vg00/vol_p1 /home/sales
+
+umount /home/sales
+lvremove -f /dev/vg00/vol_p1
+vgchange /dev/vg00
+vgreduce vg00 /dev/sdc
+vgreduce vg00 /dev/sdb
+pvremove --force --force /dev/sdb
+pvremove --force --force /dev/sdc

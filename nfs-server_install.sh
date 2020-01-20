@@ -9,17 +9,23 @@ echo
 echo
 echo -e $RED"2) NFS Service start and firewall setup"$RESET
 echo
- systemctl start rpcbind
- systemctl start nfs-server 
- systemctl start rpc-statd 
- systemctl start nfs-idmapd
  systemctl enable rpcbind
  systemctl enable nfs-server
- systemctl enable rpc-statd 
- systemctl enable nfs-idmapd
- firewall-cmd --permanent --add-service=rpc-bind
- firewall-cmd --permanent --add-service=mountd
- firewall-cmd --permanent --add-port=2049/tcp
- firewall-cmd --permanent --add-port=2049/udp
+ systemctl enable nfs-lock
+ systemctl enable nfs-idmap
+ systemctl start rpcbind
+ systemctl start nfs-server
+ systemctl start nfs-lock
+ systemctl start nfs-idmap
+ 
+ 
+ firewall-cmd --permanent --zone=public --add-service=nfs
+ firewall-cmd --permanent --zone=public --add-service=mountd
+ firewall-cmd --permanent --zone=public --add-service=rpc-bind
  firewall-cmd --reload
+ 
+ # /etc/exports
+ # /home/educafe/share	<client ip addr>(rw,sync,no_root_squash,no_all_squash)
+ # exportfs -r
+
 
