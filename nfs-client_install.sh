@@ -1,10 +1,9 @@
-RED="\e[31m"
-RESET="\e[00m"
-
+tput seraf 4
 echo
-echo -e $RED"Install NFS client Packages on ubuntu"$RESET
+echo "Install NFS client Packages on ubuntu"
 echo
- sudo apt install nfs-common
+tput setaf 2
+sudo apt install nfs-common
  
  # mkdir /home/educafe/data 	# mount point  
  # sudo mount -t nfs <server ip addr>:/home/educafe/share /home/educafe/data # mount

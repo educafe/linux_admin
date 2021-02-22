@@ -1,8 +1,8 @@
-#To allow linux to execute sudo without password only for given commands
-#linux ALL=(ALL) NOPASSWD: /sbin/useradd,/sbin/userdel
-#To allow linux to execute sudo with password only for given commands
-#linux ALL=(ALL) /sbin/useradd, /sbin/userdel
-#To allow linux to execute any command with  password
-#linux ALL=(ALL) ALL
-#To allow linux to execute any command without password
-linux ALL=(ALL) NOPASSWD:ALL
+#To allow educafe account to execute sudo without password only for given commands
+#educafe ALL=(ALL) NOPASSWD: /sbin/useradd,/sbin/userdel
+#To allow educafe account to execute sudo with password only for given commands
+#educafe ALL=(ALL) /sbin/useradd, /sbin/userdel
+#To allow educafe account to execute any command with  password
+#educafe ALL=(ALL) ALL
+#To allow educafe account to execute any command without password
+educafe ALL=(ALL) NOPASSWD:ALL

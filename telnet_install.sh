@@ -1,10 +1,11 @@
-RED="\e[31m"
-RESET="\e[00m"
-cho
-echo -e $RED"Install telnet Packages"$RESET
+tput setaf 4
 echo
+echo "Install telnet Packages"
+echo
+tput setaf 2
 yum install -y telnet-server
 echo
+tput setaf 1
 firewall-cmd --permanent --add-service=telnet --zone=public
 firewall-cmd --permanent --add-port=23/tcp
 firewall-cmd --reload

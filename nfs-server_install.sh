@@ -1,13 +1,14 @@
-RED="\e[31m"
-RESET="\e[00m"
-
+tput setaf 4
 echo
-echo -e $RED"Install NFS Packages"$RESET
+echo "Install NFS Packages"
 echo
+tput setaf 2
  yum install -y nfs-utils libnfsidmap
 
+tput setaf 4
 echo
-echo -e $RED"2) NFS Service start and firewall setup"$RESET
+echo "2) NFS Service start and firewall setup"
+tput setaf 2
 echo
  systemctl enable rpcbind
  systemctl enable nfs-server
@@ -18,7 +19,7 @@ echo
  systemctl start nfs-lock
  systemctl start nfs-idmap
  
- 
+tput setaf 1
  firewall-cmd --permanent --zone=public --add-service=nfs
  firewall-cmd --permanent --zone=public --add-service=mountd
  firewall-cmd --permanent --zone=public --add-service=rpc-bind
